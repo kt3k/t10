@@ -59,6 +59,11 @@ translated into:
 <input type="text" class="t-attr-done" placeholder="translated str_id" />
 ```
 
+DPENDENCY
+---------
+
+- jQuery
+
 LICENSE
 -------
 
