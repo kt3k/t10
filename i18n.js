@@ -129,6 +129,55 @@ window.i18n = (function (window) {
         return count;
     };
 
+    i18nPt.setAvailableLanguages = function (array) {
+        this.availables = array;
+
+        this.defaultLanguage = array[0];
+    };
+
+    i18nPt.setLanguage = function (language) {
+        this.language = language;
+    };
+
+    i18nPt.pickUsableLanguage = function (language) {
+        language = language || this.language;
+
+        if (language == null) {
+            return this.defaultLanguage;
+        }
+
+        var select = null;
+
+        for (var i = 0; i < this.availables.length; i++) {
+            var available = this.availables[i];
+
+            var foundPos = language.indexOf(available);
+
+            if (foundPos === 0) {
+                if (select == null || select.length < available.length) {
+                    select = available;
+                }
+            }
+        }
+
+        if (select == null) {
+            return this.defaultLanguage;
+        }
+
+        return select;
+
+    };
+
+    i18nPt.loadScript = function (urlPattern) {
+        return $.getScript(urlPattern.replace('{LANGUAGE}', this.pickUsableLanguage()));
+    };
+
+    i18nPt.loadJson = function (urlPattern) {
+        return $.getJSON(urlPattern.replace('{LANGUAGE}', this.pickUsableLanguage())).pipe(function (resource) {
+            this.setResources(resource);
+        });
+    };
+
     return new exports();
 
 }(window));
