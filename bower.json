@@ -1,0 +1,23 @@
+{
+  "name": "i18n.js",
+  "main": "i18n.js",
+  "version": "0.0.1",
+  "authors": [
+    "Yoshiya Hinosawa <stibium121@gmail.com>"
+  ],
+  "description": "translation for browser",
+  "keywords": [
+    "translation",
+    "i18n",
+    "internationalization",
+    "localization",
+    "language"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ]
+}
