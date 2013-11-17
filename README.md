@@ -58,3 +58,8 @@ translated into:
 ```html
 <input type="text" class="t-attr-done" placeholder="translated str_id" />
 ```
+
+LICENSE
+-------
+
+MIT License (Yoshiya Hinosawa)
