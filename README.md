@@ -1,5 +1,5 @@
-i18n.js
-=======
+i18n.js v0.0.1
+==============
 
 translation for browser
 
