@@ -1,0 +1,23 @@
+{
+  "name": "i18n.js",
+  "version": "0.1.0",
+  "description": "i18n for browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kt3k/i18n.js"
+  },
+  "keywords": [
+    "i18n",
+    "translate",
+    "translation",
+    "localization"
+  ],
+  "author": "Yoshiya Hinosawa",
+  "license": "MIT",
+  "gitHead": "cf3daef84925d9beebd1d52bc87661bc790369c4",
+  "readmeFilename": "README.md"
+}
