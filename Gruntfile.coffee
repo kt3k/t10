@@ -12,7 +12,9 @@ module.exports = (grunt) ->
         jasmine:
             src: 'src/**/*.js'
             options:
+                helpers: ['bower_components/sinon-1.7.3.js/index.js']
                 specs: 'test/**/*.js'
+                keepRunner: true
 
     grunt.loadNpmTasks 'grunt-contrib-jshint'
     grunt.loadNpmTasks 'grunt-contrib-jasmine'

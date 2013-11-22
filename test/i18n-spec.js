@@ -5,6 +5,8 @@ var expect = window.expect;
 
 var i18n = window.i18n;
 
+var sinon = window.sinon;
+
 describe('i18n', function () {
     'use strict';
 
@@ -58,6 +60,28 @@ describe('i18n', function () {
     });
 
     describe('scan', function () {
+
+        it('calls scanTTag, scanTText and scanTAttr and return aggregated objects of the combination of these methods results', function () {
+
+            var stub1 = sinon.stub(i18n, 'scanTTag');
+            var stub2 = sinon.stub(i18n, 'scanTText');
+            var stub3 = sinon.stub(i18n, 'scanTAttr');
+
+            stub1.returns(5);
+            stub2.returns(11);
+            stub3.returns(13);
+
+            var scanResult = i18n.scan();
+
+            expect(scanResult['t-tag']).toBe(5);
+            expect(scanResult['t-text']).toBe(11);
+            expect(scanResult['t-attr']).toBe(13);
+
+            stub1.restore();
+            stub2.restore();
+            stub3.restore();
+        });
+
     });
 
 });

@@ -1,6 +1,9 @@
 {
   "name": "i18n.js",
-  "main": ["src/i18n.js", "src/t.css"],
+  "main": [
+    "src/i18n.js",
+    "src/t.css"
+  ],
   "version": "0.0.1",
   "authors": [
     "Yoshiya Hinosawa <stibium121@gmail.com>"
@@ -19,5 +22,8 @@
     "node_modules",
     "bower_components",
     "test"
-  ]
+  ],
+  "devDependencies": {
+    "sinon-1.7.3.js": "http://sinonjs.org/releases/sinon-1.7.3.js"
+  }
 }
