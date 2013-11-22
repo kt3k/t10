@@ -9,14 +9,16 @@ window.i18n = (function (window) {
     var i18nPt = exports.prototype;
 
     /**
-     * set translation resource
+     * Set the translation resource
+     * @param {object} resource to set
      */
     i18nPt.setResource = function (resource) {
         this.resource = resource;
     };
 
     /**
-     * translate a key
+     * Translate a key
+     * @param {string} key to translate
      */
     i18nPt.t = function (key) {
         var value = this.resource[key];
@@ -29,11 +31,11 @@ window.i18n = (function (window) {
     };
 
     /**
-     * scan <t> tags and .t-text and .t-attr class tags and translate its contents
+     * Scan <t> tags and .t-text and .t-attr class elements and translate its contents
      * @return object
-     *     't-tag': the count of translated <t> tags
-     *     't-text': the count of translated .t-text tags
-     *     't-attr': the count of translated .t-attr tags' attributes
+     * @subreturn {number} object['t-tag'] the count of translated <t> tags
+     * @subreturn {number} object['t-text'] the count of translated .t-text tags
+     * @subreturn {number} object['t-attr'] the count of translated .t-attr tags' attributes
      */
     i18nPt.scan = function (dom) {
         var t = this.scanTTag(dom);
