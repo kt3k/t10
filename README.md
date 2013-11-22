@@ -22,7 +22,7 @@ i18n.scan();
 ```
 
 
-### *<t>* tag
+### *t* tag
 
 ```html
 ...<t>str_id</t>...
