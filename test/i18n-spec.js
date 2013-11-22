@@ -84,4 +84,36 @@ describe('i18n', function () {
 
     });
 
+
+    describe('scanTTag', function () {
+    });
+
+
+    describe('scanTText', function () {
+    });
+
+
+    describe('scanTAttr', function () {
+    });
+
+
+    describe('setAvailableLanguages', function () {
+    });
+
+
+    describe('setLanguage', function () {
+    });
+
+
+    describe('pickUsableLanguage', function () {
+    });
+
+
+    describe('loadScript', function () {
+    });
+
+
+    describe('loadJSON', function () {
+    });
+
 });
