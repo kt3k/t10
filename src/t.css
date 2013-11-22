@@ -1,0 +1,7 @@
+/**
+ * t.css
+ */
+
+t, .t-text, .t-attr {
+    visibility: hidden;
+}
