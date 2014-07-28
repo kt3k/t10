@@ -1,5 +1,5 @@
 {
-  "name": "i18n.js",
+  "name": "t10",
   "main": [
     "src/i18n.js",
     "src/t.css"

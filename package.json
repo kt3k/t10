@@ -1,14 +1,14 @@
 {
-  "name": "i18n.js",
+  "name": "t10",
   "version": "0.1.0",
-  "description": "i18n for browser",
+  "description": "translation for browser",
   "main": "index.js",
   "scripts": {
     "test": "grunt"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/kt3k/i18n.js"
+    "url": "git://github.com/kt3k/t10"
   },
   "keywords": [
     "i18n",
