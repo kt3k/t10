@@ -1,4 +1,4 @@
-i18n.js v0.0.1
+t10 v0.0.1
 ==============
 
 translation for browser
