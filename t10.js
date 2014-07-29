@@ -1,18 +1,18 @@
 
-window.i18n = (function (window) {
+window.t10 = (function (window) {
     'use strict';
 
     var $ = window.jQuery;
 
     var exports = function () {};
 
-    var i18nPt = exports.prototype;
+    var t10Pt = exports.prototype;
 
     /**
      * Set the translation resource
      * @param {object} resource to set
      */
-    i18nPt.setResource = function (resource) {
+    t10Pt.setResource = function (resource) {
         this.resource = resource;
     };
 
@@ -20,7 +20,7 @@ window.i18n = (function (window) {
      * Translate a key
      * @param {string} key to translate
      */
-    i18nPt.t = function (key) {
+    t10Pt.t = function (key) {
         var value = this.resource[key];
 
         if (value != null) {
@@ -37,7 +37,7 @@ window.i18n = (function (window) {
      * @subreturn {number} object['t-text'] the count of translated .t-text tags
      * @subreturn {number} object['t-attr'] the count of translated .t-attr tags' attributes
      */
-    i18nPt.scan = function (dom) {
+    t10Pt.scan = function (dom) {
         var t = this.scanTTag(dom);
         var tText = this.scanTText(dom);
         var tAttr = this.scanTAttr(dom);
@@ -53,7 +53,7 @@ window.i18n = (function (window) {
      * remove <t> tag and insert string for key
      * @return translated key count
      */
-    i18nPt.scanTTag = function (dom) {
+    t10Pt.scanTTag = function (dom) {
 
         var self = this;
 
@@ -73,7 +73,7 @@ window.i18n = (function (window) {
      * scan .t-text class and replace text with translated string
      * @return translated key count
      */
-    i18nPt.scanTText = function (dom) {
+    t10Pt.scanTText = function (dom) {
 
         var self = this;
 
@@ -101,7 +101,7 @@ window.i18n = (function (window) {
      * scan .t-attr class and translate its attr starts with 't:' prefix
      * @return translated key count
      */
-    i18nPt.scanTAttr = function (dom) {
+    t10Pt.scanTAttr = function (dom) {
 
         var self = this;
 
@@ -131,17 +131,17 @@ window.i18n = (function (window) {
         return count;
     };
 
-    i18nPt.setAvailableLanguages = function (array) {
+    t10Pt.setAvailableLanguages = function (array) {
         this.availables = array;
 
         this.defaultLanguage = array[0];
     };
 
-    i18nPt.setLanguage = function (language) {
+    t10Pt.setLanguage = function (language) {
         this.language = language;
     };
 
-    i18nPt.pickUsableLanguage = function (language) {
+    t10Pt.pickUsableLanguage = function (language) {
         language = language || this.language;
 
         if (language == null) {
@@ -170,11 +170,11 @@ window.i18n = (function (window) {
 
     };
 
-    i18nPt.loadScript = function (urlPattern) {
+    t10Pt.loadScript = function (urlPattern) {
         return $.getScript(urlPattern.replace('{LANGUAGE}', this.pickUsableLanguage()));
     };
 
-    i18nPt.loadJson = function (urlPattern) {
+    t10Pt.loadJson = function (urlPattern) {
         return $.getJSON(urlPattern.replace('{LANGUAGE}', this.pickUsableLanguage())).pipe(function (resource) {
             this.setResources(resource);
         });

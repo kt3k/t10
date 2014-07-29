@@ -3,16 +3,16 @@ var it = window.it;
 var describe = window.describe;
 var expect = window.expect;
 
-var i18n = window.i18n;
+var t10 = window.t10;
 
 var sinon = window.sinon;
 
-describe('i18n', function () {
+describe('t10', function () {
     'use strict';
 
     it('exists', function () {
 
-        expect(i18n).not.toEqual(null);
+        expect(t10).not.toEqual(null);
 
     });
 
@@ -22,9 +22,9 @@ describe('i18n', function () {
 
             var resource = {abc: 'abc string'};
 
-            i18n.setResource(resource);
+            t10.setResource(resource);
 
-            expect(i18n.resource).toBe(resource);
+            expect(t10.resource).toBe(resource);
         });
 
         it('resets entire resource', function () {
@@ -32,10 +32,10 @@ describe('i18n', function () {
             var resource1 = {abc: 'abc string'};
             var resource2 = {def: 'def string'};
 
-            i18n.setResource(resource1);
-            i18n.setResource(resource2);
+            t10.setResource(resource1);
+            t10.setResource(resource2);
 
-            expect(i18n.resource).toBe(resource2);
+            expect(t10.resource).toBe(resource2);
         });
     });
 
@@ -44,17 +44,17 @@ describe('i18n', function () {
         it('can translate the existing keys', function () {
             var resource = {abc: 'abc string'};
 
-            i18n.setResource(resource);
+            t10.setResource(resource);
 
-            expect(i18n.t('abc')).toBe('abc string');
+            expect(t10.t('abc')).toBe('abc string');
         });
 
         it('returns the key itself if the corresponding resource doesn\'t exist', function () {
             var resource = {abc: 'abc string'};
 
-            i18n.setResource(resource);
+            t10.setResource(resource);
 
-            expect(i18n.t('nonexistent.key')).toBe('nonexistent.key');
+            expect(t10.t('nonexistent.key')).toBe('nonexistent.key');
         });
 
     });
@@ -63,15 +63,15 @@ describe('i18n', function () {
 
         it('calls scanTTag, scanTText and scanTAttr and return aggregated objects of the combination of these methods results', function () {
 
-            var stub1 = sinon.stub(i18n, 'scanTTag');
-            var stub2 = sinon.stub(i18n, 'scanTText');
-            var stub3 = sinon.stub(i18n, 'scanTAttr');
+            var stub1 = sinon.stub(t10, 'scanTTag');
+            var stub2 = sinon.stub(t10, 'scanTText');
+            var stub3 = sinon.stub(t10, 'scanTAttr');
 
             stub1.returns(5);
             stub2.returns(11);
             stub3.returns(13);
 
-            var scanResult = i18n.scan();
+            var scanResult = t10.scan();
 
             expect(scanResult['t-tag']).toBe(5);
             expect(scanResult['t-text']).toBe(11);

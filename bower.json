@@ -1,8 +1,8 @@
 {
   "name": "t10",
   "main": [
-    "src/i18n.js",
-    "src/t.css"
+    "t10.js",
+    "t10.css"
   ],
   "version": "0.0.1",
   "authors": [

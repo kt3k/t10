@@ -2,9 +2,9 @@
   "name": "t10",
   "version": "0.1.0",
   "description": "translation for browser",
-  "main": "index.js",
+  "main": "t10.js",
   "scripts": {
-    "test": "grunt"
+    "test": "jshint *.js"
   },
   "repository": {
     "type": "git",
