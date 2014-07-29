@@ -21,8 +21,12 @@
   "gitHead": "cf3daef84925d9beebd1d52bc87661bc790369c4",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-jasmine": "~0.5.2",
-    "grunt-contrib-jshint": "~0.7.2"
+    "chai": "^1.9.1",
+    "karma": "^0.12.19",
+    "karma-chrome-launcher": "^0.1.4",
+    "karma-mocha": "^0.1.6",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-sinon-chai": "^0.2.0",
+    "mocha": "^1.21.3"
   }
 }

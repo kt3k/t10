@@ -5,7 +5,7 @@ module.exports = function (config) {
 
   config.set({
     basePath: '',
-    frameworks: ['mocha', 'chai'],
+    frameworks: ['mocha', 'sinon-chai'],
     files: [
       't10.js',
       't10-spec.js'

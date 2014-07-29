@@ -1,18 +1,12 @@
 
-var it = window.it;
-var describe = window.describe;
-var expect = window.expect;
-
-var t10 = window.t10;
-
-var sinon = window.sinon;
+/* global describe, it, expect, t10, sinon */
 
 describe('t10', function () {
     'use strict';
 
     it('exists', function () {
 
-        expect(t10).not.toEqual(null);
+        expect(t10).to.not.equal(null);
 
     });
 
@@ -24,7 +18,7 @@ describe('t10', function () {
 
             t10.setResource(resource);
 
-            expect(t10.resource).toBe(resource);
+            expect(t10.resource).to.equal(resource);
         });
 
         it('resets entire resource', function () {
@@ -35,7 +29,7 @@ describe('t10', function () {
             t10.setResource(resource1);
             t10.setResource(resource2);
 
-            expect(t10.resource).toBe(resource2);
+            expect(t10.resource).to.equal(resource2);
         });
     });
 
@@ -46,7 +40,7 @@ describe('t10', function () {
 
             t10.setResource(resource);
 
-            expect(t10.t('abc')).toBe('abc string');
+            expect(t10.t('abc')).to.equal('abc string');
         });
 
         it('returns the key itself if the corresponding resource doesn\'t exist', function () {
@@ -54,7 +48,7 @@ describe('t10', function () {
 
             t10.setResource(resource);
 
-            expect(t10.t('nonexistent.key')).toBe('nonexistent.key');
+            expect(t10.t('nonexistent.key')).to.equal('nonexistent.key');
         });
 
     });
@@ -73,9 +67,9 @@ describe('t10', function () {
 
             var scanResult = t10.scan();
 
-            expect(scanResult['t-tag']).toBe(5);
-            expect(scanResult['t-text']).toBe(11);
-            expect(scanResult['t-attr']).toBe(13);
+            expect(scanResult['t-tag']).to.equal(5);
+            expect(scanResult['t-text']).to.equal(11);
+            expect(scanResult['t-attr']).to.equal(13);
 
             stub1.restore();
             stub2.restore();
