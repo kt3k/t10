@@ -1,11 +1,2 @@
 # npm modules
 node_modules
-
-# jasmine spec runner
-_SpecRunner.html
-
-# bower components
-bower_components
-
-# grunt tmp files
-.grunt

@@ -18,12 +18,6 @@
   ],
   "license": "MIT",
   "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test"
-  ],
-  "devDependencies": {
-    "sinon-1.7.3.js": "http://sinonjs.org/releases/sinon-1.7.3.js"
-  }
+    "**/.*"
+  ]
 }
