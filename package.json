@@ -4,7 +4,7 @@
   "description": "translation for browser",
   "main": "t10.js",
   "scripts": {
-    "test": "jshint *.js"
+    "test": "jshint *.js && karma start karma.conf.js"
   },
   "repository": {
     "type": "git",
