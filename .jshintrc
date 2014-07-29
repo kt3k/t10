@@ -15,5 +15,6 @@
     "expr": true,
     "newcap": false,
 
-    "browser": true
+    "browser": true,
+    "node": true
 }
