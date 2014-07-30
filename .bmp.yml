@@ -1,6 +1,6 @@
 ---
-version: 0.0.1
+version: 0.1.0
 files:
-  bower.json: ! '"version": "%.%.%"'
-  package.json: ! '"version": "%.%.%"'
+  bower.json: '"version": "%.%.%"'
+  package.json: '"version": "%.%.%"'
   README.md: t10 v%.%.%

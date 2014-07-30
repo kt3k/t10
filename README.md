@@ -1,4 +1,4 @@
-t10 v0.0.1
+t10 v0.1.0
 ==============
 
 translation for browser
