@@ -1,4 +1,10 @@
 
+/**
+ * @class t10
+ * @singleton
+ *
+ * t10 class provides basic translation functionalities in Browsers.
+ */
 window.t10 = (function (window) {
     'use strict';
 
@@ -10,15 +16,21 @@ window.t10 = (function (window) {
 
     /**
      * Set the translation resource
-     * @param {object} resource to set
+     *
+     * @param {Object} resource The mapping from key to translated string
+     * @return {t10} The t10 object itself
      */
     t10Pt.setResource = function (resource) {
         this.resource = resource;
+
+        return this;
     };
 
     /**
      * Translate a key
-     * @param {string} key to translate
+     *
+     * @param {String} key The key to translate
+     * @return {String} The translated string
      */
     t10Pt.t = function (key) {
         var value = this.resource[key];
@@ -32,10 +44,11 @@ window.t10 = (function (window) {
 
     /**
      * Scan <t> tags and .t-text and .t-attr class elements and translate its contents
+     *
      * @return object
-     * @subreturn {number} object['t-tag'] the count of translated <t> tags
-     * @subreturn {number} object['t-text'] the count of translated .t-text tags
-     * @subreturn {number} object['t-attr'] the count of translated .t-attr tags' attributes
+     * @subreturn {Number} object['t-tag'] the count of translated <t> tags
+     * @subreturn {Number} object['t-text'] the count of translated .t-text tags
+     * @subreturn {Number} object['t-attr'] the count of translated .t-attr tags' attributes
      */
     t10Pt.scan = function (dom) {
         var t = this.scanTTag(dom);
@@ -51,6 +64,7 @@ window.t10 = (function (window) {
 
     /**
      * remove <t> tag and insert string for key
+     *
      * @return translated key count
      */
     t10Pt.scanTTag = function (dom) {
@@ -71,6 +85,7 @@ window.t10 = (function (window) {
 
     /**
      * scan .t-text class and replace text with translated string
+     *
      * @return translated key count
      */
     t10Pt.scanTText = function (dom) {
@@ -99,6 +114,7 @@ window.t10 = (function (window) {
 
     /**
      * scan .t-attr class and translate its attr starts with 't:' prefix
+     *
      * @return translated key count
      */
     t10Pt.scanTAttr = function (dom) {
