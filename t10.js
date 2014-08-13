@@ -12,6 +12,8 @@ window.t10 = (function (window) {
 
     var exports = function () {};
 
+    var self = new exports();
+
     var t10Pt = exports.prototype;
 
     /**
@@ -21,9 +23,9 @@ window.t10 = (function (window) {
      * @return {t10} The t10 object itself
      */
     t10Pt.setResource = function (resource) {
-        this.resource = resource;
+        self.resource = resource;
 
-        return this;
+        return self;
     };
 
     /**
@@ -33,7 +35,7 @@ window.t10 = (function (window) {
      * @return {String} The translated string
      */
     t10Pt.t = function (key) {
-        var value = this.resource[key];
+        var value = self.resource[key];
 
         if (value != null) {
             return value;
@@ -51,9 +53,9 @@ window.t10 = (function (window) {
      * @subreturn {Number} object['t-attr'] the count of translated .t-attr tags' attributes
      */
     t10Pt.scan = function (dom) {
-        var t = this.scanTTag(dom);
-        var tText = this.scanTText(dom);
-        var tAttr = this.scanTAttr(dom);
+        var t = self.scanTTag(dom);
+        var tText = self.scanTText(dom);
+        var tAttr = self.scanTAttr(dom);
 
         return {
             't-tag': t,
@@ -68,8 +70,6 @@ window.t10 = (function (window) {
      * @return translated key count
      */
     t10Pt.scanTTag = function (dom) {
-
-        var self = this;
 
         var list = $('t', dom).each(function () {
 
@@ -89,8 +89,6 @@ window.t10 = (function (window) {
      * @return translated key count
      */
     t10Pt.scanTText = function (dom) {
-
-        var self = this;
 
         var count = 0;
 
@@ -119,8 +117,6 @@ window.t10 = (function (window) {
      */
     t10Pt.scanTAttr = function (dom) {
 
-        var self = this;
-
         var count = 0;
 
         $('.t-attr', dom).each(function () {
@@ -148,26 +144,26 @@ window.t10 = (function (window) {
     };
 
     t10Pt.setAvailableLanguages = function (array) {
-        this.availables = array;
+        self.availables = array;
 
-        this.defaultLanguage = array[0];
+        self.defaultLanguage = array[0];
     };
 
     t10Pt.setLanguage = function (language) {
-        this.language = language;
+        self.language = language;
     };
 
     t10Pt.pickUsableLanguage = function (language) {
-        language = language || this.language;
+        language = language || self.language;
 
         if (language == null) {
-            return this.defaultLanguage;
+            return self.defaultLanguage;
         }
 
         var select = null;
 
-        for (var i = 0; i < this.availables.length; i++) {
-            var available = this.availables[i];
+        for (var i = 0; i < self.availables.length; i++) {
+            var available = self.availables[i];
 
             var foundPos = language.indexOf(available);
 
@@ -179,7 +175,7 @@ window.t10 = (function (window) {
         }
 
         if (select == null) {
-            return this.defaultLanguage;
+            return self.defaultLanguage;
         }
 
         return select;
@@ -187,12 +183,12 @@ window.t10 = (function (window) {
     };
 
     t10Pt.loadScript = function (urlPattern) {
-        return $.getScript(urlPattern.replace('{LANGUAGE}', this.pickUsableLanguage()));
+        return $.getScript(urlPattern.replace('{LANGUAGE}', self.pickUsableLanguage()));
     };
 
     t10Pt.loadJson = function (urlPattern) {
-        return $.getJSON(urlPattern.replace('{LANGUAGE}', this.pickUsableLanguage())).pipe(function (resource) {
-            this.setResources(resource);
+        return $.getJSON(urlPattern.replace('{LANGUAGE}', self.pickUsableLanguage())).pipe(function (resource) {
+            self.setResources(resource);
         });
     };
 
