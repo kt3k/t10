@@ -28,6 +28,10 @@ window.t10 = (function (window) {
         return self;
     };
 
+    t10Pt.getResource = function () {
+        return self.resource;
+    };
+
     /**
      * Translate a key
      *

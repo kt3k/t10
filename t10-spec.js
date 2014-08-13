@@ -18,7 +18,7 @@ describe('t10', function () {
 
             t10.setResource(resource);
 
-            expect(t10.resource).to.equal(resource);
+            expect(t10.getResource()).to.equal(resource);
         });
 
         it('resets entire resource', function () {
@@ -29,7 +29,7 @@ describe('t10', function () {
             t10.setResource(resource1);
             t10.setResource(resource2);
 
-            expect(t10.resource).to.equal(resource2);
+            expect(t10.getResource()).to.equal(resource2);
         });
     });
 
@@ -54,28 +54,6 @@ describe('t10', function () {
     });
 
     describe('scan', function () {
-
-        it('calls scanTTag, scanTText and scanTAttr and return aggregated objects of the combination of these methods results', function () {
-
-            var stub1 = sinon.stub(t10, 'scanTTag');
-            var stub2 = sinon.stub(t10, 'scanTText');
-            var stub3 = sinon.stub(t10, 'scanTAttr');
-
-            stub1.returns(5);
-            stub2.returns(11);
-            stub3.returns(13);
-
-            var scanResult = t10.scan();
-
-            expect(scanResult['t-tag']).to.equal(5);
-            expect(scanResult['t-text']).to.equal(11);
-            expect(scanResult['t-attr']).to.equal(13);
-
-            stub1.restore();
-            stub2.restore();
-            stub3.restore();
-        });
-
     });
 
 
