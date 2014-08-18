@@ -57,27 +57,11 @@ describe('t10', function () {
     });
 
 
-    describe('scanTTag', function () {
-    });
-
-
-    describe('scanTText', function () {
-    });
-
-
-    describe('scanTAttr', function () {
-    });
-
-
     describe('setAvailableLanguages', function () {
     });
 
 
-    describe('setLanguage', function () {
-    });
-
-
-    describe('pickUsableLanguage', function () {
+    describe('getBestLanguage', function () {
     });
 
 
