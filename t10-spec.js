@@ -1,5 +1,5 @@
 
-/* global describe, it, expect, t10, sinon */
+/* global describe, it, expect, t10 */
 
 describe('t10', function () {
     'use strict';
