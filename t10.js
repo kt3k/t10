@@ -5,41 +5,41 @@
  *
  * t10 class provides basic translation functionalities in Browsers.
  */
-window.t10 = (function (window) {
+window.t10 = (function (window, $) {
     'use strict';
 
-    var $ = window.jQuery;
+    var exports = {};
 
-    var exports = function () {};
+    var resource = {};
 
-    var self = new exports();
+    var available = [];
 
-    var t10Pt = exports.prototype;
+    var defaultLanguage = null;
 
     /**
-     * Set the translation resource
+     * Sets the translation resource
      *
      * @param {Object} resource The mapping from key to translated string
      * @return {t10} The t10 object itself
      */
-    t10Pt.setResource = function (resource) {
-        self.resource = resource;
+    exports.setResource = function (resource) {
+        resource = resource;
 
-        return self;
+        return exports;
     };
 
-    t10Pt.getResource = function () {
-        return self.resource;
+    exports.getResource = function () {
+        return resource;
     };
 
     /**
-     * Translate a key
+     * Translates a key
      *
      * @param {String} key The key to translate
      * @return {String} The translated string
      */
-    t10Pt.t = function (key) {
-        var value = self.resource[key];
+    exports.t = function (key) {
+        var value = resource[key];
 
         if (value != null) {
             return value;
@@ -56,16 +56,14 @@ window.t10 = (function (window) {
      * @subreturn {Number} object['t-text'] the count of translated .t-text tags
      * @subreturn {Number} object['t-attr'] the count of translated .t-attr tags' attributes
      */
-    t10Pt.scan = function (dom) {
-        var t = self.scanTTag(dom);
-        var tText = self.scanTText(dom);
-        var tAttr = self.scanTAttr(dom);
+    exports.scan = function (dom) {
 
         return {
-            't-tag': t,
-            't-text': tText,
-            't-attr': tAttr
+            't-tag': exports.scanTTag(dom),
+            't-text': exports.scanTText(dom),
+            't-attr': exports.scanTAttr(dom)
         };
+
     };
 
     /**
@@ -73,13 +71,13 @@ window.t10 = (function (window) {
      *
      * @return translated key count
      */
-    t10Pt.scanTTag = function (dom) {
+    exports.scanTTag = function (dom) {
 
         var list = $('t', dom).each(function () {
 
-            var t = $(this);
+            var elm = $(this);
 
-            t.after(self.t(t.text())).remove();
+            elm.after(exports.t(elm.text())).remove();
 
         });
 
@@ -92,7 +90,7 @@ window.t10 = (function (window) {
      *
      * @return translated key count
      */
-    t10Pt.scanTText = function (dom) {
+    exports.scanTText = function (dom) {
 
         var count = 0;
 
@@ -101,7 +99,7 @@ window.t10 = (function (window) {
             var elm = $(this);
 
             // replace text with translated string
-            elm.text(self.t(elm.text()));
+            elm.text(exports.t(elm.text()));
 
             elm.removeClass('t-text').addClass('t-text-done');
 
@@ -119,7 +117,7 @@ window.t10 = (function (window) {
      *
      * @return translated key count
      */
-    t10Pt.scanTAttr = function (dom) {
+    exports.scanTAttr = function (dom) {
 
         var count = 0;
 
@@ -132,7 +130,7 @@ window.t10 = (function (window) {
                     label = label.replace(T_ATTR_REGEXP, '');
 
                     // replace attribute value with translated string
-                    attr.value = self.t(label);
+                    attr.value = exports.t(label);
 
                     // increment translation count
                     count ++;
@@ -147,31 +145,30 @@ window.t10 = (function (window) {
         return count;
     };
 
-    t10Pt.setAvailableLanguages = function (array) {
-        self.availables = array;
 
-        self.defaultLanguage = array[0];
+    exports.setAvailableLanguages = function (array) {
+        availables = array;
 
-        return self;
+        defaultLanguage = array[0];
+
+        return exports;
     };
 
-    t10Pt.setLanguage = function (language) {
-        self.language = language;
 
-        return self;
-    };
-
-    t10Pt.getBestLanguage = function (language) {
-        language = language || self.language;
+    /**
+     * Returns the best match language among the available languages
+     *
+     */
+    exports.getBestLanguage = function (language) {
 
         if (language == null) {
-            return self.defaultLanguage;
+            return defaultLanguage;
         }
 
         var select = null;
 
-        for (var i = 0; i < self.availables.length; i++) {
-            var available = self.availables[i];
+        for (var i = 0; i < availables.length; i++) {
+            var available = availables[i];
 
             var foundPos = language.indexOf(available);
 
@@ -183,23 +180,23 @@ window.t10 = (function (window) {
         }
 
         if (select == null) {
-            return self.defaultLanguage;
+            return defaultLanguage;
         }
 
         return select;
 
     };
 
-    t10Pt.loadScript = function (urlPattern) {
-        return $.getScript(urlPattern.replace('{LANGUAGE}', self.getBestLanguage()));
+    exports.loadScript = function (urlPattern) {
+        return $.getScript(urlPattern.replace('{LANGUAGE}', exports.getBestLanguage()));
     };
 
-    t10Pt.loadJson = function (urlPattern) {
-        return $.getJSON(urlPattern.replace('{LANGUAGE}', self.getBestLanguage())).pipe(function (resource) {
-            self.setResources(resource);
+    exports.loadJson = function (urlPattern) {
+        return $.getJSON(urlPattern.replace('{LANGUAGE}', exports.getBestLanguage())).pipe(function (resource) {
+            exports.setResources(resource);
         });
     };
 
-    return new exports();
+    return exports;
 
-}(window));
+}(window, window.jQuery));
