@@ -5,20 +5,29 @@ translation for browser
 
 ## Usage
 
-set translation resource:
+First, load the script:
+```html
+<script type="text/javascript" src="path/to/t10.js"></script>
+```
+
+Second, set the translation resource:
 
 ```javascript
-i18n.setResource({
+t10.setResource({
   str_id: 'translated str_id'
 });
 ```
 
-perform translation on the document:
+Finally, perform the translation (This translates all the elements which need translation in the page):
 
 ```javascript
-i18n.scan();
+t10.scan();
 ```
 
+That's it.
+
+
+## What *t10.scan()* translates
 
 ### *t* tag
 
@@ -59,7 +68,7 @@ translated into:
 
 # Hide untranslated elements
 
-You can hide untranslated elements by the following css:
+You can hide untranslated elements by the following style:
 
 ```css
 t, .t-text, .t-attr {
