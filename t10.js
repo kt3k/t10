@@ -151,13 +151,17 @@ window.t10 = (function (window) {
         self.availables = array;
 
         self.defaultLanguage = array[0];
+
+        return self;
     };
 
     t10Pt.setLanguage = function (language) {
         self.language = language;
+
+        return self;
     };
 
-    t10Pt.pickUsableLanguage = function (language) {
+    t10Pt.getBestLanguage = function (language) {
         language = language || self.language;
 
         if (language == null) {
@@ -187,11 +191,11 @@ window.t10 = (function (window) {
     };
 
     t10Pt.loadScript = function (urlPattern) {
-        return $.getScript(urlPattern.replace('{LANGUAGE}', self.pickUsableLanguage()));
+        return $.getScript(urlPattern.replace('{LANGUAGE}', self.getBestLanguage()));
     };
 
     t10Pt.loadJson = function (urlPattern) {
-        return $.getJSON(urlPattern.replace('{LANGUAGE}', self.pickUsableLanguage())).pipe(function (resource) {
+        return $.getJSON(urlPattern.replace('{LANGUAGE}', self.getBestLanguage())).pipe(function (resource) {
             self.setResources(resource);
         });
     };
