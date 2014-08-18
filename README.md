@@ -99,6 +99,16 @@ $.getScript('path/to/resource/' + language + '.js').then(function () {
 });
 ```
 
+# Translate
+
+`t` function translates a single key.
+
+```
+t10.setResource({pen: 'ペン'});
+
+t10.t('pen'); // => ペン
+```
+
 # Dependency
 
 - jQuery
