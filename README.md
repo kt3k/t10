@@ -78,6 +78,27 @@ t, .t-text, .t-attr {
 
 **Note**: `t` tag and `.t-text`, `.t-attr` classes are going to be removed after the translation.
 
+# Select the best fit language from available list
+
+### Basic Usage
+
+```javascript
+t10.setAvailables(['en', 'fr', 'ja']).getBestLanguage('ja'); // => 'ja'
+t10.setAvailables(['en', 'fr', 'ja']).getBestLanuuage('de'); // => 'en' # the first available is the default
+t10.setAvailables(['en', 'fr', 'ja']).getBestLanguage('en.US'); // => 'en'
+t10.setAvailables(['en', 'fr', 'ja']).getBestLanguage('ja.JP'); // => 'ja'
+```
+
+### Typical Usage
+
+```javascript
+var language = t10.setAvailables(['en', 'fr', 'ja']).getBestLanguage(getFromSystem());
+
+$.getScript('path/to/resource/' + language + '.js').then(function () {
+    t10.scan();
+});
+```
+
 # Dependency
 
 - jQuery
