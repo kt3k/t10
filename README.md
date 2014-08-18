@@ -1,11 +1,9 @@
-t10 v0.1.0
-==============
+# t10 v0.1.0
 
 translation for browser
 
 
-Usage
------
+## Usage
 
 set translation resource:
 
@@ -59,10 +57,9 @@ translated into:
 <input type="text" class="t-attr-done" placeholder="translated str_id" />
 ```
 
-HIDE UNTRANSLATED
------------------
+# Hide untranslated elements
 
-Because the `<t>` tag and `.t-text` and `.t-attr` classes are replaced after translation, you can hide untranslated elements by following simple css:
+You can hide untranslated elements by the following css:
 
 ```css
 t, .t-text, .t-attr {
@@ -70,12 +67,12 @@ t, .t-text, .t-attr {
 }
 ```
 
-DPENDENCY
----------
+**Note**: `t` tag and `.t-text`, `.t-attr` classes are going to be removed after the translation.
+
+# Dependency
 
 - jQuery
 
-LICENSE
--------
+# License
 
 MIT License (Yoshiya Hinosawa)
