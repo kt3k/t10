@@ -12,7 +12,7 @@ window.t10 = (function (window, $) {
 
     var resource = {};
 
-    var available = [];
+    var availables = [];
 
     var defaultLanguage = null;
 
@@ -22,8 +22,8 @@ window.t10 = (function (window, $) {
      * @param {Object} resource The mapping from key to translated string
      * @return {t10} The t10 object itself
      */
-    exports.setResource = function (resource) {
-        resource = resource;
+    exports.setResource = function (newResource) {
+        resource = newResource;
 
         return exports;
     };
@@ -187,15 +187,6 @@ window.t10 = (function (window, $) {
 
     };
 
-    exports.loadScript = function (urlPattern) {
-        return $.getScript(urlPattern.replace('{LANGUAGE}', exports.getBestLanguage()));
-    };
-
-    exports.loadJson = function (urlPattern) {
-        return $.getJSON(urlPattern.replace('{LANGUAGE}', exports.getBestLanguage())).pipe(function (resource) {
-            exports.setResources(resource);
-        });
-    };
 
     return exports;
 

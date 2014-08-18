@@ -81,11 +81,4 @@ describe('t10', function () {
     });
 
 
-    describe('loadScript', function () {
-    });
-
-
-    describe('loadJSON', function () {
-    });
-
 });
