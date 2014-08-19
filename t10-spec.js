@@ -54,15 +54,55 @@ describe('t10', function () {
     });
 
     describe('scan', function () {
+
+        it('replaces t tag', function () {
+
+        });
+
+        it('replaces .t-text class', function () {
+
+        });
+
+        it('replaces .t-attr class', function () {
+
+        });
+
     });
 
 
     describe('setAvailableLanguages', function () {
+
+        it('sets available languages', function () {
+
+            var availables = ['en', 'fr', 'ja'];
+
+            t10.setAvailableLanguages(availables);
+
+            expect(t10.getAvailableLanguages()).to.equal(availables);
+
+        });
+
     });
 
 
     describe('getBestLanguage', function () {
-    });
 
+        it('gets the best fit language among the available ones', function () {
+
+            var availables = ['en', 'en-Latn-US', 'en-Latn-UK', 'fr', 'ja', 'ja'];
+
+            t10.setAvailableLanguages(availables);
+
+            expect(t10.getBestLanguage('en')).to.equal('en');
+            expect(t10.getBestLanguage('en-Latn-UK')).to.equal('en-Latn-UK');
+            expect(t10.getBestLanguage('en-Latn-AU')).to.equal('en');
+            expect(t10.getBestLanguage('fr')).to.equal('fr');
+            expect(t10.getBestLanguage('ja')).to.equal('ja');
+            expect(t10.getBestLanguage('ja-Jpan-JP')).to.equal('ja');
+            expect(t10.getBestLanguage('de')).to.equal('en'); // default language
+
+        });
+
+    });
 
 });

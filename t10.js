@@ -147,11 +147,19 @@ window.t10 = (function (window, $) {
 
 
     exports.setAvailableLanguages = function (array) {
+
         availables = array;
 
         defaultLanguage = array[0];
 
         return exports;
+
+    };
+
+    exports.getAvailableLanguages = function () {
+
+        return availables;
+
     };
 
 
