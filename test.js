@@ -3,15 +3,9 @@ require('./t10')
 const { expect } = require('chai')
 
 describe('t10', function () {
-  'use strict'
-
-  it('exists', function () {
-    expect(t10).to.not.equal(null)
-  })
-
   describe('setResource', function () {
     it('sets the resource', function () {
-      var resource = {abc: 'abc string'}
+      var resource = { abc: 'abc string' }
 
       t10.setResource(resource)
 
@@ -19,8 +13,8 @@ describe('t10', function () {
     })
 
     it('resets entire resource', function () {
-      var resource1 = {abc: 'abc string'}
-      var resource2 = {def: 'def string'}
+      var resource1 = { abc: 'abc string' }
+      var resource2 = { def: 'def string' }
 
       t10.setResource(resource1)
       t10.setResource(resource2)
@@ -31,7 +25,7 @@ describe('t10', function () {
 
   describe('t', function () {
     it('can translate the existing keys', function () {
-      var resource = {abc: 'abc string'}
+      var resource = { abc: 'abc string' }
 
       t10.setResource(resource)
 
@@ -39,7 +33,7 @@ describe('t10', function () {
     })
 
     it('returns the key itself if the corresponding resource doesn\'t exist', function () {
-      var resource = {abc: 'abc string'}
+      var resource = { abc: 'abc string' }
 
       t10.setResource(resource)
 

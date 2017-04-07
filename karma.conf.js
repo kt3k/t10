@@ -7,8 +7,10 @@ module.exports = config => config.set({
     '*.js': ['browserify']
   },
   browserify: {
+    transform: [['babelify', { plugins: ['istanbul'] }]]
   },
-  reporters: ['progress'],
+  reporters: ['progress', 'coverage'],
+  coverageReporter: { type: 'lcov' },
   browsers: ['Firefox'],
   singleRun: true
 })
