@@ -1,25 +1,14 @@
-// karma.conf.js
-
-module.exports = function (config) {
-  'use strict'
-
-  config.set({
-    basePath: '',
-    frameworks: ['mocha', 'sinon-chai'],
-    files: [
-      't10.js',
-      't10-spec.js'
-    ],
-    exclude: [
-    ],
-    preprocessors: {
-    },
-    reporters: ['progress'],
-    port: 9876,
-    colors: true,
-    logLevel: config.LOG_INFO,
-    autoWatch: false,
-    browsers: ['Firefox'],
-    singleRun: true
-  })
-}
+module.exports = config => config.set({
+  frameworks: ['mocha', 'browserify'],
+  files: [
+    't10-spec.js'
+  ],
+  preprocessors: {
+    '*.js': ['browserify']
+  },
+  browserify: {
+  },
+  reporters: ['progress'],
+  browsers: ['Firefox'],
+  singleRun: true
+})

@@ -1,4 +1,6 @@
 /* global describe, it, expect, t10 */
+require('./t10')
+const { expect } = require('chai')
 
 describe('t10', function () {
   'use strict'
