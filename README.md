@@ -2,6 +2,7 @@
 
 > translation for browser
 
+[![CircleCI](https://circleci.com/gh/kt3k/t10.svg?style=svg)](https://circleci.com/gh/kt3k/t10)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 ## Usage
