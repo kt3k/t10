@@ -1,20 +1,15 @@
 
 /**
- * @class t10
- * @singleton
- *
  * t10 class provides basic translation functionalities in Browsers.
  */
-window.t10 = (function (window, $) {
-  'use strict'
+window.t10 = (function (window) {
+  const exports = {}
 
-  var exports = {}
+  let resource = {}
 
-  var resource = {}
+  let availables = []
 
-  var availables = []
-
-  var defaultLanguage = null
+  let defaultLanguage = null
 
   /**
    * Sets the translation resource
@@ -39,7 +34,7 @@ window.t10 = (function (window, $) {
    * @return {String} The translated string
    */
   exports.t = function (key) {
-    var value = resource[key]
+    const value = resource[key]
 
     if (value != null) {
       return value
@@ -67,16 +62,14 @@ window.t10 = (function (window, $) {
   /**
    * remove <t> tag and insert string for key
    *
+   * @param {HTMLElement} dom
    * @return translated key count
    */
   exports.scanTTag = function (dom) {
-    var list = $('t', dom).each(function () {
-      var elm = $(this)
-
-      elm.after(exports.t(elm.text())).remove()
-    })
-
-    return list.length
+    return [].map.call(dom.querySelectorAll('t'), el => {
+      el.parentElement.insertBefore(new Text(exports.t(el.textContent)), el)
+      el.parentElement.removeChild(el)
+    }).length
   }
 
   /**
@@ -85,24 +78,23 @@ window.t10 = (function (window, $) {
    * @return translated key count
    */
   exports.scanTText = function (dom) {
-    var count = 0
+    const count = 0
 
-    $('.t-text', dom).each(function () {
-      var elm = $(this)
+    ;[].forEach.call(dom.querySelectorAll('.t-text'), function (el) {
+      // replace text with translated string
+      el.textContent = exports.t(elm.text())
 
-            // replace text with translated string
-      elm.text(exports.t(elm.text()))
+      el.classList.remove('t-text')
+      el.classList.add('t-text-done')
 
-      elm.removeClass('t-text').addClass('t-text-done')
-
-            // increment translation count
+      // increment translation count
       count++
     })
 
     return count
   }
 
-  var T_ATTR_REGEXP = /^t:/ // translatable attribute starts with 't:'
+  const T_ATTR_REGEXP = /^t:/ // translatable attribute starts with 't:'
 
   /**
    * scan .t-attr class and translate its attr starts with 't:' prefix
@@ -110,24 +102,25 @@ window.t10 = (function (window, $) {
    * @return translated key count
    */
   exports.scanTAttr = function (dom) {
-    var count = 0
+    let count = 0
 
-    $('.t-attr', dom).each(function () {
-      $.each(this.attributes, function (i, attr) {
-        var label = attr.value
+    ;[].forEach.call(dom.querySelectorAll('.t-attr'), el => {
+      ;[].forEach.call(el.attributes, (i, attr) => {
+        let label = attr.value
 
         if (T_ATTR_REGEXP.test(label)) {
           label = label.replace(T_ATTR_REGEXP, '')
 
-                    // replace attribute value with translated string
+          // replace attribute value with translated string
           attr.value = exports.t(label)
 
-                    // increment translation count
+          // increment translation count
           count++
         }
       })
 
-      $(this).removeClass('t-attr').addClass('t-attr-done')
+      el.classList.remove('t-attr')
+      el.classList.add('t-attr-done')
     })
 
     return count
@@ -154,12 +147,12 @@ window.t10 = (function (window, $) {
       return defaultLanguage
     }
 
-    var select = null
+    let select = null
 
-    for (var i = 0; i < availables.length; i++) {
-      var available = availables[i]
+    for (let i = 0; i < availables.length; i++) {
+      const available = availables[i]
 
-      var foundPos = language.indexOf(available)
+      const foundPos = language.indexOf(available)
 
       if (foundPos === 0) {
         if (select == null || select.length < available.length) {
@@ -176,4 +169,4 @@ window.t10 = (function (window, $) {
   }
 
   return exports
-}(window, window.jQuery))
+}(window))

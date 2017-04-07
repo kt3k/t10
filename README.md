@@ -113,7 +113,7 @@ t10.t('pen'); // => ペン
 
 # Dependency
 
-- jQuery
+- None
 
 # License
 
