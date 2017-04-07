@@ -1,7 +1,7 @@
 module.exports = config => config.set({
   frameworks: ['mocha', 'browserify'],
   files: [
-    't10-spec.js'
+    'test.js'
   ],
   preprocessors: {
     '*.js': ['browserify']
