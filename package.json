@@ -4,7 +4,7 @@
   "description": "translation for browser",
   "main": "t10.js",
   "scripts": {
-    "test": "karma start karma.conf.js",
+    "test": "karma start",
     "lint": "standard"
   },
   "repository": {
@@ -29,6 +29,8 @@
     "karma-phantomjs-launcher": "^1.0.2",
     "karma-sinon-chai": "^1.2.4",
     "mocha": "^3.1.2",
+    "sinon": "^2.1.0",
+    "sinon-chai": "^2.9.0",
     "standard": "^10.0.1"
   }
 }
