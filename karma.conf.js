@@ -1,7 +1,7 @@
 // karma.conf.js
 
 module.exports = function (config) {
-  'use strict';
+  'use strict'
 
   config.set({
     basePath: '',
@@ -21,5 +21,5 @@ module.exports = function (config) {
     autoWatch: false,
     browsers: ['PhantomJS'],
     singleRun: true
-  });
-};
+  })
+}

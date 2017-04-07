@@ -1,108 +1,87 @@
-
 /* global describe, it, expect, t10 */
 
 describe('t10', function () {
-    'use strict';
+  'use strict'
 
-    it('exists', function () {
+  it('exists', function () {
+    expect(t10).to.not.equal(null)
+  })
 
-        expect(t10).to.not.equal(null);
+  describe('setResource', function () {
+    it('sets the resource', function () {
+      var resource = {abc: 'abc string'}
 
-    });
+      t10.setResource(resource)
 
-    describe('setResource', function () {
+      expect(t10.getResource()).to.equal(resource)
+    })
 
-        it('sets the resource', function () {
+    it('resets entire resource', function () {
+      var resource1 = {abc: 'abc string'}
+      var resource2 = {def: 'def string'}
 
-            var resource = {abc: 'abc string'};
+      t10.setResource(resource1)
+      t10.setResource(resource2)
 
-            t10.setResource(resource);
+      expect(t10.getResource()).to.equal(resource2)
+    })
+  })
 
-            expect(t10.getResource()).to.equal(resource);
-        });
+  describe('t', function () {
+    it('can translate the existing keys', function () {
+      var resource = {abc: 'abc string'}
 
-        it('resets entire resource', function () {
+      t10.setResource(resource)
 
-            var resource1 = {abc: 'abc string'};
-            var resource2 = {def: 'def string'};
+      expect(t10.t('abc')).to.equal('abc string')
+    })
 
-            t10.setResource(resource1);
-            t10.setResource(resource2);
+    it('returns the key itself if the corresponding resource doesn\'t exist', function () {
+      var resource = {abc: 'abc string'}
 
-            expect(t10.getResource()).to.equal(resource2);
-        });
-    });
+      t10.setResource(resource)
 
-    describe('t', function () {
+      expect(t10.t('nonexistent.key')).to.equal('nonexistent.key')
+    })
+  })
 
-        it('can translate the existing keys', function () {
-            var resource = {abc: 'abc string'};
+  describe('scan', function () {
+    it('replaces t tag', function () {
 
-            t10.setResource(resource);
+    })
 
-            expect(t10.t('abc')).to.equal('abc string');
-        });
+    it('replaces .t-text class', function () {
 
-        it('returns the key itself if the corresponding resource doesn\'t exist', function () {
-            var resource = {abc: 'abc string'};
+    })
 
-            t10.setResource(resource);
+    it('replaces .t-attr class', function () {
 
-            expect(t10.t('nonexistent.key')).to.equal('nonexistent.key');
-        });
+    })
+  })
 
-    });
+  describe('setAvailableLanguages', function () {
+    it('sets available languages', function () {
+      var availables = ['en', 'fr', 'ja']
 
-    describe('scan', function () {
+      t10.setAvailableLanguages(availables)
 
-        it('replaces t tag', function () {
+      expect(t10.getAvailableLanguages()).to.equal(availables)
+    })
+  })
 
-        });
+  describe('getBestLanguage', function () {
+    it('gets the best fit language among the available ones', function () {
+      var availables = ['en', 'en-Latn-US', 'en-Latn-UK', 'fr', 'ja', 'ja']
 
-        it('replaces .t-text class', function () {
+      t10.setAvailableLanguages(availables)
 
-        });
-
-        it('replaces .t-attr class', function () {
-
-        });
-
-    });
-
-
-    describe('setAvailableLanguages', function () {
-
-        it('sets available languages', function () {
-
-            var availables = ['en', 'fr', 'ja'];
-
-            t10.setAvailableLanguages(availables);
-
-            expect(t10.getAvailableLanguages()).to.equal(availables);
-
-        });
-
-    });
-
-
-    describe('getBestLanguage', function () {
-
-        it('gets the best fit language among the available ones', function () {
-
-            var availables = ['en', 'en-Latn-US', 'en-Latn-UK', 'fr', 'ja', 'ja'];
-
-            t10.setAvailableLanguages(availables);
-
-            expect(t10.getBestLanguage('en')).to.equal('en');
-            expect(t10.getBestLanguage('en-Latn-UK')).to.equal('en-Latn-UK');
-            expect(t10.getBestLanguage('en-Latn-AU')).to.equal('en');
-            expect(t10.getBestLanguage('fr')).to.equal('fr');
-            expect(t10.getBestLanguage('ja')).to.equal('ja');
-            expect(t10.getBestLanguage('ja-Jpan-JP')).to.equal('ja');
-            expect(t10.getBestLanguage('de')).to.equal('en'); // default language
-
-        });
-
-    });
-
-});
+      expect(t10.getBestLanguage('en')).to.equal('en')
+      expect(t10.getBestLanguage('en-Latn-UK')).to.equal('en-Latn-UK')
+      expect(t10.getBestLanguage('en-Latn-AU')).to.equal('en')
+      expect(t10.getBestLanguage('fr')).to.equal('fr')
+      expect(t10.getBestLanguage('ja')).to.equal('ja')
+      expect(t10.getBestLanguage('ja-Jpan-JP')).to.equal('ja')
+      expect(t10.getBestLanguage('de')).to.equal('en') // default language
+    })
+  })
+})

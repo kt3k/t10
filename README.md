@@ -1,7 +1,8 @@
 # t10 v0.1.0
 
-translation for browser
+> translation for browser
 
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 ## Usage
 
