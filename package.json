@@ -7,7 +7,7 @@
     "test": "karma start",
     "codecov": "npm test && codecov",
     "lint": "standard",
-    "dist": "bili index.js",
+    "dist": "bili index.js --format iife",
     "prepublish": "rimraf dist && npm run dist"
   },
   "repository": {
