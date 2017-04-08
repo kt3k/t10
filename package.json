@@ -1,6 +1,6 @@
 {
   "name": "t10",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Translation for browser",
   "main": "dist/t10.js",
   "scripts": {
