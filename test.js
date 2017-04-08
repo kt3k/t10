@@ -1,4 +1,3 @@
-/* global describe, it, expect */
 import * as t10 from './index'
 const { expect } = require('chai')
 

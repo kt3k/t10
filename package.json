@@ -41,5 +41,11 @@
     "mocha": "^3.1.2",
     "rimraf": "^2.6.1",
     "standard": "^10.0.1"
+  },
+  "standard": {
+    "env": [
+      "browser",
+      "mocha"
+    ]
   }
 }

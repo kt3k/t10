@@ -62,7 +62,7 @@ export const scanTTag = dom => {
 export const scanTText = dom => {
   ;[].forEach.call(dom.querySelectorAll('.t-text'), function (el) {
     // replace text with translated string
-    el.textContent = t(elm.text())
+    el.textContent = t(el.textContent)
 
     el.classList.remove('t-text')
     el.classList.add('t-text-done')
