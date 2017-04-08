@@ -1,9 +1,9 @@
 import * as t10 from './index'
 const { expect } = require('chai')
 
-describe('t10', function () {
-  describe('setResource', function () {
-    it('sets the resource', function () {
+describe('t10', () => {
+  describe('setResource', () => {
+    it('sets the resource', () => {
       var resource = { abc: 'abc string' }
 
       t10.setResource(resource)
@@ -11,7 +11,7 @@ describe('t10', function () {
       expect(t10.getResource()).to.equal(resource)
     })
 
-    it('resets entire resource', function () {
+    it('resets entire resource', () => {
       var resource1 = { abc: 'abc string' }
       var resource2 = { def: 'def string' }
 
@@ -22,8 +22,8 @@ describe('t10', function () {
     })
   })
 
-  describe('t', function () {
-    it('can translate the existing keys', function () {
+  describe('t', () => {
+    it('can translate the existing keys', () => {
       var resource = { abc: 'abc string' }
 
       t10.setResource(resource)
@@ -31,7 +31,7 @@ describe('t10', function () {
       expect(t10.t('abc')).to.equal('abc string')
     })
 
-    it('returns the key itself if the corresponding resource doesn\'t exist', function () {
+    it('returns the key itself if the corresponding resource doesn\'t exist', () => {
       var resource = { abc: 'abc string' }
 
       t10.setResource(resource)
@@ -40,22 +40,22 @@ describe('t10', function () {
     })
   })
 
-  describe('scan', function () {
-    it('replaces t tag', function () {
+  describe('scan', () => {
+    it('replaces t tag', () => {
 
     })
 
-    it('replaces .t-text class', function () {
+    it('replaces .t-text class', () => {
 
     })
 
-    it('replaces .t-attr class', function () {
+    it('replaces .t-attr class', () => {
 
     })
   })
 
-  describe('setAvailableLanguages', function () {
-    it('sets available languages', function () {
+  describe('setAvailableLanguages', () => {
+    it('sets available languages', () => {
       var availables = ['en', 'fr', 'ja']
 
       t10.setAvailableLanguages(availables)
@@ -64,8 +64,8 @@ describe('t10', function () {
     })
   })
 
-  describe('getBestLanguage', function () {
-    it('gets the best fit language among the available ones', function () {
+  describe('getBestLanguage', () => {
+    it('gets the best fit language among the available ones', () => {
       var availables = ['en', 'en-Latn-US', 'en-Latn-UK', 'fr', 'ja', 'ja']
 
       t10.setAvailableLanguages(availables)
