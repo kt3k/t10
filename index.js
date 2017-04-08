@@ -19,6 +19,8 @@ export const setResource = newResource => { resource = newResource }
 
 export const getResource = () => resource
 
+export const clearResource = () => setResource({})
+
 /**
  * Translates the key.
  * @param {String} key The key to translate

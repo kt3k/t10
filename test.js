@@ -2,9 +2,19 @@ import * as t10 from './index'
 const { expect } = require('chai')
 
 describe('t10', () => {
+  beforeEach(() => {
+    t10.setResource({
+      abc: 'abc string'
+    })
+  })
+
+  afterEach(() => {
+    t10.clearResource()
+  })
+
   describe('setResource', () => {
     it('sets the resource', () => {
-      var resource = { abc: 'abc string' }
+      const resource = { foo: 'hello' }
 
       t10.setResource(resource)
 
@@ -12,8 +22,8 @@ describe('t10', () => {
     })
 
     it('resets entire resource', () => {
-      var resource1 = { abc: 'abc string' }
-      var resource2 = { def: 'def string' }
+      const resource1 = { abc: 'abc string' }
+      const resource2 = { def: 'def string' }
 
       t10.setResource(resource1)
       t10.setResource(resource2)
@@ -24,18 +34,10 @@ describe('t10', () => {
 
   describe('t', () => {
     it('can translate the existing keys', () => {
-      var resource = { abc: 'abc string' }
-
-      t10.setResource(resource)
-
       expect(t10.t('abc')).to.equal('abc string')
     })
 
     it('returns the key itself if the corresponding resource doesn\'t exist', () => {
-      var resource = { abc: 'abc string' }
-
-      t10.setResource(resource)
-
       expect(t10.t('nonexistent.key')).to.equal('nonexistent.key')
     })
   })
