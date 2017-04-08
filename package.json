@@ -1,7 +1,7 @@
 {
   "name": "t10",
   "version": "0.2.0",
-  "description": "translation for browser",
+  "description": "Translation for browser",
   "main": "dist/t10.js",
   "scripts": {
     "test": "karma start",

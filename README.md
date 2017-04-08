@@ -1,8 +1,9 @@
 # t10 v0.2.0
 
-> translation for browser
+> Translation for browser
 
 [![CircleCI](https://circleci.com/gh/kt3k/t10.svg?style=svg)](https://circleci.com/gh/kt3k/t10)
+[![codecov](https://codecov.io/gh/kt3k/t10/branch/master/graph/badge.svg)](https://codecov.io/gh/kt3k/t10)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 ## Usage
