@@ -7,6 +7,7 @@ module.exports = config => config.set({
     '*.js': ['browserify']
   },
   browserify: {
+    debug: true,
     transform: [['babelify', { presets: ['es2015'], plugins: ['istanbul'] }]]
   },
   reporters: ['progress', 'coverage'],

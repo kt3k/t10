@@ -124,23 +124,33 @@ export const getBestLanguage = language => {
     return defaultLanguage
   }
 
-  let select = null
-
-  for (let i = 0; i < availables.length; i++) {
-    const available = availables[i]
-
-    const foundPos = language.indexOf(available)
-
-    if (foundPos === 0) {
-      if (select == null || select.length < available.length) {
-        select = available
-      }
-    }
+  if (availables.indexOf(language) !== -1) {
+    return language
   }
 
-  if (select == null) {
+  const candidates = []
+
+  availables.forEach(available => {
+    let c = 0
+
+    while (!!available.charAt(c) && available.charAt(c) === language.charAt(c)) c++
+
+    if (c >= 2) {
+      if (language.indexOf(available) !== -1) {
+        // The available is included in the given language
+        // The it gets the bonus point 100
+        // Could be wrong approach
+        c += 100
+      }
+      candidates.push({ score: c, language: available })
+    }
+  })
+
+  if (candidates.length === 0) {
     return defaultLanguage
   }
 
-  return select
+  candidates.sort((x, y) => -x.score + y.score)
+
+  return candidates[0].language
 }

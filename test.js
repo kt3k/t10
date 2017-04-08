@@ -1,8 +1,8 @@
-import * as t10 from './index'
+const t10 = require('./index')
 const chai = require('chai')
 const { expect } = chai
 const dirtyChai = require('dirty-chai')
-import { u } from 'umbrellajs'
+const { u } = require('umbrellajs')
 
 chai.use(dirtyChai)
 
@@ -50,7 +50,7 @@ describe('t10', () => {
   })
 
   describe('scan', () => {
-    it('replaces t tag', () => {
+    it('replaces t tag with translated text', () => {
       u('body').append('<t>abc</t>')
 
       t10.scan()
@@ -59,7 +59,16 @@ describe('t10', () => {
       expect(document.body.querySelector('t')).to.be.null()
     })
 
-    it('replaces .t-text class', () => {
+    it('replaces in the given range', () => {
+      u('body').append('<div><t>abc</t></div><p><t>abc<t></p>')
+
+      t10.scan(document.querySelector('div'))
+
+      expect(document.querySelector('div').textContent).to.equal('abc string')
+      expect(document.querySelector('p').textContent).to.equal('abc')
+    })
+
+    it('replaces .t-text class textContent with translated text', () => {
       u('body').append('<span class="t-text">abc</span>')
 
       t10.scan()
@@ -69,7 +78,7 @@ describe('t10', () => {
       expect(document.body.querySelector('.t-text-done')).to.not.be.null()
     })
 
-    it('replaces .t-attr class', () => {
+    it('replaces .t-attr class attribtues with translated text', () => {
       u('body').append('<input class="t-attr" value="t:abc" />')
 
       t10.scan()
@@ -82,7 +91,7 @@ describe('t10', () => {
 
   describe('setAvailableLanguages', () => {
     it('sets available languages', () => {
-      var availables = ['en', 'fr', 'ja']
+      const availables = ['en', 'fr', 'ja']
 
       t10.setAvailableLanguages(availables)
 
@@ -92,17 +101,19 @@ describe('t10', () => {
 
   describe('getBestLanguage', () => {
     it('gets the best fit language among the available ones', () => {
-      var availables = ['en', 'en-Latn-US', 'en-Latn-UK', 'fr', 'ja', 'ja']
+      const availables = ['en-Latn-US', 'en', 'en-Latn-UK', 'fr', 'ja']
 
       t10.setAvailableLanguages(availables)
 
       expect(t10.getBestLanguage('en')).to.equal('en')
+      expect(t10.getBestLanguage('en-Latn-US')).to.equal('en-Latn-US')
       expect(t10.getBestLanguage('en-Latn-UK')).to.equal('en-Latn-UK')
       expect(t10.getBestLanguage('en-Latn-AU')).to.equal('en')
       expect(t10.getBestLanguage('fr')).to.equal('fr')
       expect(t10.getBestLanguage('ja')).to.equal('ja')
       expect(t10.getBestLanguage('ja-Jpan-JP')).to.equal('ja')
-      expect(t10.getBestLanguage('de')).to.equal('en') // default language
+      expect(t10.getBestLanguage('de')).to.equal('en-Latn-US') // default language
+      expect(t10.getBestLanguage()).to.equal('en-Latn-US') // default language
     })
   })
 })
