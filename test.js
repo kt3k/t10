@@ -1,11 +1,18 @@
 import * as t10 from './index'
-const { expect } = require('chai')
+const chai = require('chai')
+const { expect } = chai
+const dirtyChai = require('dirty-chai')
+import { u } from 'umbrellajs'
+
+chai.use(dirtyChai)
 
 describe('t10', () => {
   beforeEach(() => {
     t10.setResource({
       abc: 'abc string'
     })
+
+    u('body').html('')
   })
 
   afterEach(() => {
@@ -44,15 +51,32 @@ describe('t10', () => {
 
   describe('scan', () => {
     it('replaces t tag', () => {
+      u('body').append('<t>abc</t>')
 
+      t10.scan()
+
+      expect(document.body.textContent).to.equal('abc string')
+      expect(document.body.querySelector('t')).to.be.null()
     })
 
     it('replaces .t-text class', () => {
+      u('body').append('<span class="t-text">abc</span>')
 
+      t10.scan()
+
+      expect(document.body.textContent).to.equal('abc string')
+      expect(document.body.querySelector('.t-text')).to.be.null()
+      expect(document.body.querySelector('.t-text-done')).to.not.be.null()
     })
 
     it('replaces .t-attr class', () => {
+      u('body').append('<input class="t-attr" value="t:abc" />')
 
+      t10.scan()
+
+      expect(document.body.querySelector('input').getAttribute('value')).to.equal('abc string')
+      expect(document.body.querySelector('.t-attr')).to.be.null()
+      expect(document.body.querySelector('.t-attr-done')).to.not.be.null()
     })
   })
 

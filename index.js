@@ -38,9 +38,13 @@ export const t = key => {
 
 /**
  * Scan <t> tags and .t-text and .t-attr class elements and translate its contents
- * @param {HTMLElement} dom The range to perform translation
+ * @param {?HTMLElement} dom The range to perform translation
  */
 export const scan = dom => {
+  if (dom == null) {
+    dom = document.body
+  }
+
   scanTTag(dom)
   scanTText(dom)
   scanTAttr(dom)
@@ -50,8 +54,8 @@ export const scan = dom => {
  * remove <t> tag and insert string for key
  * @param {HTMLElement} dom The range to perform translation
  */
-export const scanTTag = dom => {
-  return [].map.call(dom.querySelectorAll('t'), el => {
+const scanTTag = dom => {
+  [].forEach.call(dom.querySelectorAll('t'), el => {
     el.parentElement.insertBefore(new Text(t(el.textContent)), el)
     el.parentElement.removeChild(el)
   })
@@ -61,8 +65,8 @@ export const scanTTag = dom => {
  * scan .t-text class and replace text with translated string
  * @param {HTMLElement} dom The range to perform translation
  */
-export const scanTText = dom => {
-  ;[].forEach.call(dom.querySelectorAll('.t-text'), function (el) {
+const scanTText = dom => {
+  [].forEach.call(dom.querySelectorAll('.t-text'), el => {
     // replace text with translated string
     el.textContent = t(el.textContent)
 
@@ -77,16 +81,17 @@ const T_ATTR_REGEXP = /^t:/ // translatable attribute starts with 't:'
  * scan .t-attr class and translate its attr starts with 't:' prefix
  * @param {HTMLElement} dom The range to perform translation
  */
-export const scanTAttr = dom => {
-  ;[].forEach.call(dom.querySelectorAll('.t-attr'), el => {
-    ;[].forEach.call(el.attributes, (i, attr) => {
+const scanTAttr = dom => {
+  [].forEach.call(dom.querySelectorAll('.t-attr'), el => {
+    [].forEach.call(el.attributes, attr => {
       let label = attr.value
 
+      el.setAttribute(attr.name, 'abcde')
       if (T_ATTR_REGEXP.test(label)) {
         label = label.replace(T_ATTR_REGEXP, '')
 
         // replace attribute value with translated string
-        attr.value = t(label)
+        el.setAttribute(attr.name, t(label))
       }
     })
 
