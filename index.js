@@ -13,17 +13,14 @@ let defaultLanguage = null
 
 /**
  * Sets the translation resource
- *
  * @param {Object} resource The mapping from key to translated string
- * @return {t10} The t10 object itself
  */
 export const setResource = newResource => { resource = newResource }
 
 export const getResource = () => resource
 
 /**
- * Translates a key
- *
+ * Translates the key.
  * @param {String} key The key to translate
  * @return {String} The translated string
  */
@@ -39,62 +36,46 @@ export const t = key => {
 
 /**
  * Scan <t> tags and .t-text and .t-attr class elements and translate its contents
- * @return object
- * @subreturn {Number} object['t-tag'] the count of translated <t> tags
- * @subreturn {Number} object['t-text'] the count of translated .t-text tags
- * @subreturn {Number} object['t-attr'] the count of translated .t-attr tags' attributes
+ * @param {HTMLElement} dom The range to perform translation
  */
-export const scan = dom => ({
-  't-tag': scanTTag(dom),
-  't-text': scanTText(dom),
-  't-attr': scanTAttr(dom)
-})
+export const scan = dom => {
+  scanTTag(dom)
+  scanTText(dom)
+  scanTAttr(dom)
+}
 
 /**
  * remove <t> tag and insert string for key
- *
- * @param {HTMLElement} dom
- * @return translated key count
+ * @param {HTMLElement} dom The range to perform translation
  */
 export const scanTTag = dom => {
   return [].map.call(dom.querySelectorAll('t'), el => {
     el.parentElement.insertBefore(new Text(t(el.textContent)), el)
     el.parentElement.removeChild(el)
-  }).length
+  })
 }
 
 /**
  * scan .t-text class and replace text with translated string
- *
- * @return translated key count
+ * @param {HTMLElement} dom The range to perform translation
  */
 export const scanTText = dom => {
-  let count = 0
-
   ;[].forEach.call(dom.querySelectorAll('.t-text'), function (el) {
     // replace text with translated string
     el.textContent = t(elm.text())
 
     el.classList.remove('t-text')
     el.classList.add('t-text-done')
-
-    // increment translation count
-    count++
   })
-
-  return count
 }
 
 const T_ATTR_REGEXP = /^t:/ // translatable attribute starts with 't:'
 
 /**
  * scan .t-attr class and translate its attr starts with 't:' prefix
- *
- * @return translated key count
+ * @param {HTMLElement} dom The range to perform translation
  */
 export const scanTAttr = dom => {
-  let count = 0
-
   ;[].forEach.call(dom.querySelectorAll('.t-attr'), el => {
     ;[].forEach.call(el.attributes, (i, attr) => {
       let label = attr.value
@@ -104,25 +85,27 @@ export const scanTAttr = dom => {
 
         // replace attribute value with translated string
         attr.value = t(label)
-
-        // increment translation count
-        count++
       }
     })
 
     el.classList.remove('t-attr')
     el.classList.add('t-attr-done')
   })
-
-  return count
 }
 
-export const setAvailableLanguages = array => {
-  availables = array
+/**
+ * @param {string[]} languages The list of available languages
+ */
+export const setAvailableLanguages = languages => {
+  availables = languages
 
-  defaultLanguage = array[0]
+  defaultLanguage = languages[0]
 }
 
+/**
+ * Gets the avialable languages.
+ * @return {string[]}
+ */
 export const getAvailableLanguages = () => availables
 
 /**

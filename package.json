@@ -6,7 +6,9 @@
   "scripts": {
     "test": "karma start",
     "codecov": "npm test && codecov",
-    "lint": "standard"
+    "lint": "standard",
+    "dist": "bili index.js",
+    "prepublish": "rimraf dist && npm run dist"
   },
   "repository": {
     "type": "git",
@@ -37,6 +39,7 @@
     "karma-firefox-launcher": "^1.0.1",
     "karma-mocha": "^1.2.0",
     "mocha": "^3.1.2",
+    "rimraf": "^2.6.1",
     "standard": "^10.0.1"
   }
 }
