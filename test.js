@@ -1,5 +1,5 @@
-/* global describe, it, expect, t10 */
-require('./t10')
+/* global describe, it, expect */
+import * as t10 from './index'
 const { expect } = require('chai')
 
 describe('t10', function () {
