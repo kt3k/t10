@@ -8,7 +8,7 @@
 
 ## Usage
 
-First, load the script:
+First, load the [script](https://unpkg.com/t10/dist/t10.js):
 ```html
 <script type="text/javascript" src="path/to/t10.js"></script>
 ```
@@ -28,6 +28,28 @@ t10.scan();
 ```
 
 That's it.
+
+---
+
+Alternatively you can use via npm.
+
+First install t10 locally:
+
+    npm i t10
+
+Then require / import it and use it:
+
+```js
+const t10 = require('t10');
+```
+
+or:
+
+```js
+import * as t10 from require('t10');
+```
+
+The rest is the same.
 
 
 ## What *t10.scan()* translates
