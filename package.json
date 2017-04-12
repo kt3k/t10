@@ -3,6 +3,7 @@
   "version": "0.5.0",
   "description": "Translation for browser",
   "main": "dist/t10.js",
+  "style": "t10.css",
   "scripts": {
     "test": "karma start",
     "codecov": "npm test && codecov",
