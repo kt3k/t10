@@ -17,17 +17,39 @@ Second, set the translation resource:
 
 ```javascript
 t10.setResource({
-  str_id: 'translated str_id'
+  id_foo: 'Translated foo!',
+  id_bar: 'Translated bar!',
+  id_baz: 'Translated baz!'
 });
 ```
 
-Finally, perform the translation (This translates all the elements which need translation in the page):
+Finally, perform the translation:
 
 ```javascript
 t10.scan();
 ```
 
-That's it.
+That's it. This performs the translation on the entire page synchronously.
+
+With the above call the following html:
+
+```html
+<p>
+  <t>id_foo</t>
+  <span class="t-text-done">id_bar</span>
+  <input class="t-attr-done" placeholder="t:id_baz" />
+</p>
+```
+
+Changes in to:
+
+```html
+<p>
+  Translated foo!
+  <span class="t-text">Translated bar!</span>
+  <input class="t-attr" placeholder="Translated baz!" />
+</p>
+```
 
 ---
 
