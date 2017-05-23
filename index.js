@@ -27,7 +27,7 @@ export const clearResource = () => setResource({})
  * @return {String} The translated string
  */
 export const t = key => {
-  const value = resource[key]
+  const value = resource[key.trim()]
 
   if (value != null) {
     return value

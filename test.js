@@ -78,6 +78,14 @@ describe('t10', () => {
       expect(document.body.querySelector('.t-text-done')).to.not.be.null()
     })
 
+    it('ignores the leading and trailing whitespaces when looking up strings', () => {
+      u('body').append('<span class="t-text"> abc\n</span>')
+
+      t10.scan()
+
+      expect(document.body.textContent).to.equal('abc string')
+    })
+
     it('replaces .t-attr class attribtues with translated text', () => {
       u('body').append('<input class="t-attr" value="t:abc" />')
 
