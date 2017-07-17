@@ -86,7 +86,6 @@ const scanTAttr = dom => {
     [].forEach.call(el.attributes, attr => {
       let label = attr.value
 
-      el.setAttribute(attr.name, 'abcde')
       if (T_ATTR_REGEXP.test(label)) {
         label = label.replace(T_ATTR_REGEXP, '')
 
