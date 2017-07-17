@@ -1,4 +1,4 @@
-# t10 v1.0.0
+# t10 v1.0.1
 
 > Translation for browser
 
