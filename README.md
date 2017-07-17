@@ -1,5 +1,7 @@
 # t10 v1.0.0
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/kt3k/t10.svg)](https://greenkeeper.io/)
+
 > Translation for browser
 
 [![CircleCI](https://circleci.com/gh/kt3k/t10.svg?style=svg)](https://circleci.com/gh/kt3k/t10)
