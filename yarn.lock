@@ -760,9 +760,9 @@ better-assert@~1.0.0:
   dependencies:
     callsite "1.0.0"
 
-bili@^0.18.0:
-  version "0.18.2"
-  resolved "https://registry.yarnpkg.com/bili/-/bili-0.18.2.tgz#9f8f37bc496d06c700529518c00863a599ce4832"
+bili@^0.19.0:
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/bili/-/bili-0.19.0.tgz#d4323187dc8e1dae77f1b901b110093c56430422"
   dependencies:
     cac "^4.2.0"
     camelcase "^4.1.0"
