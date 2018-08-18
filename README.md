@@ -1,12 +1,10 @@
 # t10 v1.0.2
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/kt3k/t10.svg)](https://greenkeeper.io/)
-
 > Translation for browser, 642B minified+gzipped
 
 [![CircleCI](https://circleci.com/gh/kt3k/t10.svg?style=svg)](https://circleci.com/gh/kt3k/t10)
 [![codecov](https://codecov.io/gh/kt3k/t10/branch/master/graph/badge.svg)](https://codecov.io/gh/kt3k/t10)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/kt3k/t10.svg)](https://greenkeeper.io/)
 
 ## Usage
 
