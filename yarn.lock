@@ -4531,10 +4531,10 @@ merge-stream@^1.0.1:
   dependencies:
     readable-stream "^2.0.1"
 
-microbundle@^0.10.0:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/microbundle/-/microbundle-0.10.0.tgz#ae8bd415942f7170fd51bfa935f88c9d881f74ca"
-  integrity sha512-MGQDcNoNwwKUWmzO37eWcW5bRgXWQOrPREiNBjpy9J7Z4WTxyPKZbH2Hv2ActlS1bwjG+W87KbV3WU/Q42447Q==
+microbundle@^0.11.0:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/microbundle/-/microbundle-0.11.0.tgz#266bcf4210192698c23fe3bf3581ab81d31a14d0"
+  integrity sha512-Lt2f8OhC2y2uKyJ5zA8lEEiDsIAbk6yllBuoAWLIdYVIXYqOdN9mO3DI7VW7x/fw87gdnCLIJdVtpP6kaI99LA==
   dependencies:
     "@babel/core" "^7.2.2"
     "@babel/plugin-proposal-class-properties" "7.2.1"
@@ -4551,6 +4551,7 @@ microbundle@^0.10.0:
     gzip-size "^5.0.0"
     pretty-bytes "^5.1.0"
     rollup "^0.67.3"
+    rollup-plugin-alias "^1.5.1"
     rollup-plugin-babel "^4.1.0-0"
     rollup-plugin-buble "^0.19.4"
     rollup-plugin-bundle-size "^1.0.1"
@@ -6423,6 +6424,13 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^2.0.0"
     inherits "^2.0.1"
 
+rollup-plugin-alias@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-alias/-/rollup-plugin-alias-1.5.1.tgz#80cce3a967befda5b09c86abc14a043a78035b46"
+  integrity sha512-pQTYBRNfLedoVOO7AYHNegIavEIp4jKTga5jUi1r//KYgHKGWgG4qJXYhbcWKt2k1FwGlR5wCYoY+IFkme0t4A==
+  dependencies:
+    slash "^2.0.0"
+
 rollup-plugin-babel@^4.1.0-0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/rollup-plugin-babel/-/rollup-plugin-babel-4.1.0.tgz#c97f50c82aa8e89ddaa116cdc5c832b8ba74db17"
@@ -6709,6 +6717,11 @@ simple-swizzle@^0.2.2:
   resolved "https://registry.yarnpkg.com/simple-swizzle/-/simple-swizzle-0.2.2.tgz#a4da6b635ffcccca33f70d17cb92592de95e557a"
   dependencies:
     is-arrayish "^0.3.1"
+
+slash@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/slash/-/slash-2.0.0.tgz#de552851a1759df3a8f206535442f5ec4ddeab44"
+  integrity sha512-ZYKh3Wh2z1PpEXWr0MpSBZ0V6mZHAQfYevttO11c51CaWjGTaadiKZ+wVt1PbMlDV5qhMFslpZCemhwOK7C89A==
 
 slice-ansi@1.0.0:
   version "1.0.0"
